@@ -1,3 +1,6 @@
+export HF_TOKEN=""
+export OPENAI_API_KEY=""
+
 MODEL_NAME=$1
 TP=2
 PORT=8080
@@ -16,7 +19,6 @@ conda activate $CONDA_PATH
 
 
 # Hugging Face 認証
-# export HF_TOKEN=""
 export HF_HOME=${SLURM_TMPDIR:-$HOME}/.hf_cache
 export TRANSFORMERS_CACHE=$HF_HOME
 export HUGGINGFACE_HUB_TOKEN=$HF_TOKEN
@@ -26,6 +28,8 @@ echo "HF cache dir : $HF_HOME"                   # デバッグ用
 mkdir -p predictions
 mkdir -p judged
 mkdir -p leaderboard
+
+echo "start ${MODEL_NAME}"
 
 #--- GPU 監視 -------------------------------------------------------
 nvidia-smi -i 0,1,2,3,4,5,6,7 -l 3 > nvidia-smi.log &
@@ -60,8 +64,16 @@ sed "s|PORT|${PORT}|" ${template} \
 python $HOME/llm_bridge_prod/eval_hle/predict.py > predict.log 2>&1
 
 #--- 評価 -----------------------------------------------------------
-python $HOME/llm_bridge_prod/eval_hle/judge.py
-
+python $HOME/llm_bridge_prod/eval_hle/judge.py &&\
+    latest_dir=$(find "$HOME/leaderboard/" -maxdepth 1 -type d -printf "%f\n" \
+		     | grep -E '^[0-9]{4}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}_[0-9]{2}$' \
+		     | sort | tail -n 1)  &&\
+    dir_name=${MODEL_NAME##*/}  &&\
+    output_dir="/home/Competition2025/P09/shareP09/eval/hle/${dir_name}"  &&\
+    mkdir -p $output_dir  &&\
+    cp $HOME/leaderboard/${latest_dir}/* $output_dir  &&\
+    chmod 777 $output_dir &&\
+echo "cp to ${output_dir}"
 #--- 後片付け -------------------------------------------------------
 kill $pid_vllm
 kill $pid_nvsmi

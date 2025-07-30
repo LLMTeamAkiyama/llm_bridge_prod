@@ -5,16 +5,14 @@
 #SBATCH --nodes=1
 #SBATCH --gpus-per-node=2
 #SBATCH --cpus-per-task=64
-#SBATCH --time=04:00:00
+#SBATCH --time=20:00:00
 #SBATCH --output=/home/Competition2025/P09/%u/logs/eval/%x-%j.out
 #SBATCH --error=/home/Competition2025/P09/%u/logs/eval/%x-%j.err
-#SBATCH --export=OPENAI_API_KEY=""
-#SBATCH --export=HF_TOKEN=""
 
 SCTRPI_ROOT=${HOME}/llm_bridge_prod
 
 
-sh ${SCTRPI_ROOT}/eval_hle/_run.sh "/home/Competition2025/P09/shareP09/models/DeepSeek-R1-Distill-Qwen-32B"
+# sh ${SCTRPI_ROOT}/eval_hle/_run.sh "/home/Competition2025/P09/shareP09/models/DeepSeek-R1-Distill-Qwen-32B"
 sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/cleand_meta-math_MetaMathQA"
 sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p1"
 sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p2"
