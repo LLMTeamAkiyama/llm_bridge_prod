@@ -24,6 +24,8 @@ mkdir -p "$HF_HOME"
 echo "HF cache dir : $HF_HOME"                   # デバッグ用
 
 mkdir -p predictions
+mkdir -p judged
+mkdir -p leaderboard
 
 #--- GPU 監視 -------------------------------------------------------
 nvidia-smi -i 0,1,2,3,4,5,6,7 -l 3 > nvidia-smi.log &
@@ -58,7 +60,7 @@ sed "s|PORT|${PORT}|" ${template} \
 python $HOME/llm_bridge_prod/eval_hle/predict.py > predict.log 2>&1
 
 #--- 評価 -----------------------------------------------------------
-# OPENAI_API_KEY=xxx python judge.py
+python $HOME/llm_bridge_prod/eval_hle/judge.py
 
 #--- 後片付け -------------------------------------------------------
 kill $pid_vllm
