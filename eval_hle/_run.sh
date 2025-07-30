@@ -49,6 +49,11 @@ echo "vLLM READY"
 
 #--- 推論 -----------------------------------------------------------
 
+template="${HOME}/llm_bridge_prod/eval_hle/conf/config_TEMPLATE.yaml"
+config="${HOME}/llm_bridge_prod/eval_hle/conf/config.yaml"
+sed "s|PORT|${PORT}|" ${template} \
+    | sed "s|MODEL_NAME|${MODEL_NAME}|" \
+	  > ${config} &&\
 
 python $HOME/llm_bridge_prod/eval_hle/predict.py > predict.log 2>&1
 

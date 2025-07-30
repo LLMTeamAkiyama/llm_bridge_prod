@@ -14,18 +14,18 @@
 SCTRPI_ROOT=${HOME}/llm_bridge_prod
 
 
-sh ${SCTRPI_ROOT}/_run.sh "/home/Competition2025/P09/shareP09/models/DeepSeek-R1-Distill-Qwen-32B"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/cleand_meta-math_MetaMathQA"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_p1"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_p2"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_p3"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_p4"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_p5"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_DeepScaleR-Preview-Dataset"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/cleand_meta-math_MetaMathQA"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_Omni-Math"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_gair_limo"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_OpenMathReasoning"
-# sh ${SCTRPI_ROOT}/_run.sh "LLMTeamAkiyama/sft_OpenMathInstruct-2"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "/home/Competition2025/P09/shareP09/models/DeepSeek-R1-Distill-Qwen-32B"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/cleand_meta-math_MetaMathQA"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p1"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p2"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p3"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p4"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_p5"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_DeepScaleR-Preview-Dataset"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/cleand_meta-math_MetaMathQA"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_Omni-Math"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_gair_limo"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_OpenMathReasoning"
+sh ${SCTRPI_ROOT}/eval_hle/_run.sh "LLMTeamAkiyama/sft_OpenMathInstruct-2"
 
 
